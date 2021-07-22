@@ -94,15 +94,30 @@ public class QRCodeDecoder {
             BitmapFactory.Options options = new BitmapFactory.Options();
             options.inJustDecodeBounds = true;
             BitmapFactory.decodeFile(picturePath, options);
-            int sampleSize = options.outHeight / 400;
-            if (sampleSize <= 0) {
-                sampleSize = 1;
-            }
-            options.inSampleSize = sampleSize;
+            options.inSampleSize = calculateInSampleSize(options, 400, 400);
             options.inJustDecodeBounds = false;
             return BitmapFactory.decodeFile(picturePath, options);
         } catch (Exception e) {
             return null;
         }
+    }
+
+    public static int calculateInSampleSize(BitmapFactory.Options options, int reqWidth, int reqHeight) {
+        final int height = options.outHeight;
+        final int width = options.outWidth;
+        int inSampleSize = 1;
+
+        if (height > reqHeight || width > reqWidth) {
+
+            final int halfHeight = height / 2;
+            final int halfWidth = width / 2;
+
+            while ((halfHeight / inSampleSize) > reqHeight
+                    && (halfWidth / inSampleSize) > reqWidth) {
+                inSampleSize *= 2;
+            }
+        }
+
+        return inSampleSize;
     }
 }

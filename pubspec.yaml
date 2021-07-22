@@ -3,7 +3,7 @@ description: >-
   This package allows user to read or get the data by scan or read QRCode
   from other object(like wall) or the local image file.
   This package is available thanks to @hetian9288's work.
-version: 2.0.0
+version: 2.0.1
 homepage: https://github.com/flutter-fast-kit/super_qr_reader
 
 environment:
