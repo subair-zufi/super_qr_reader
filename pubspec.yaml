@@ -13,7 +13,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  image_picker: ^0.7.4
+  image_picker: ^0.8.5
   permission_handler: ^6.1.1
 
 dev_dependencies:
@@ -31,9 +31,6 @@ flutter:
   # adding or updating assets for this project.
   plugin:
     platforms:
-      android:
-        package: io.flutterfastkit.flutter_qr_code_scaner
-        pluginClass: FlutterQrReaderPlugin
       ios:
         pluginClass: FlutterQrReaderPlugin
 
